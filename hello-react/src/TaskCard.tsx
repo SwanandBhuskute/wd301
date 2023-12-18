@@ -14,7 +14,7 @@ const TaskCard: React.FC<TaskCardProps> = (props) => {
     if (props.completedAtDate.length != 0) {
         text = `Completed on: ${props.completedAtDate}`;
     } 
-    if(props.dueDate.length != 0) {
+    else if(props.dueDate.length != 0) {
         text = `Due on: ${props.dueDate}`;
     }
     return (
