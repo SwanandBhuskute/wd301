@@ -7,12 +7,11 @@ interface TaskCardProps {
     dueDate: string;
     completedAtDate: string;
     assigneeName: string;
-    isDone: boolean;
 }
 
 const TaskCard: React.FC<TaskCardProps> = (props) => {
     let text = '';
-    if (props.isDone) {
+    if (props.completedAtDate.length != 0) {
         text = `Completed on: ${props.completedAtDate}`;
     } else {
         text = `Due on: ${props.dueDate}`;
