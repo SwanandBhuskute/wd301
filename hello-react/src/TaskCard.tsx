@@ -1,6 +1,16 @@
-import './TaskCard.css'
+import React from 'react';
+import './TaskCard.css'  
 
-const TaskCard = (props) => {
+
+interface TaskCardProps {
+    title: string;
+    dueDate: string;
+    completedAtDate: string;
+    assigneeName: string;
+    isDone: boolean;
+}
+
+const TaskCard: React.FC<TaskCardProps> = (props) => {
     let text = '';
     if (props.isDone) {
         text = `Completed on: ${props.completedAtDate}`;
