@@ -4,18 +4,17 @@ import './TaskCard.css'
 
 interface TaskCardProps {
     title: string;
-    dueDate: string;
-    completedAtDate: string;
+    dueDate?: string;
+    completedAtDate?: string;
     assigneeName: string;
-    isDone: boolean;
 }
 
 const TaskCard: React.FC<TaskCardProps> = (props) => {
     let text = "";
-    if (props.isDone == true) {
+    if (props.completedAtDate) {
         text = `Completed on: ${props.completedAtDate}`;
     } 
-    else if(props.isDone == false) {
+    else{
         text = `Due on: ${props.dueDate}`;
     }
     return (
