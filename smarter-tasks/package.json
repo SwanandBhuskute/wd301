@@ -1,13 +1,9 @@
 {
-  "homepage": "https://SwanandBhuskute.github.io/wd301",
   "name": "smarter-tasks",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "npm run dev",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
