@@ -4,7 +4,7 @@ import { TaskItem } from "./types";
 
 interface Props {
   tasks: TaskItem[];
-  onDelete: (index: number) => void; // Function to handle task deletion
+  onDelete: (index: number) => void;
 }
 
 const TaskList = (props: Props) => {
