@@ -3,14 +3,60 @@
 // import viteLogo from '/vite.svg'
 // import TaskForm from "./TaskForm";
 // import TaskList from './TaskList'
+// import TaskApp from "./TaskApp";
 import './App.css'
-import TaskApp from "./TaskApp";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
+import HomePage from './pages/HomePage';
+import TaskListPage from './pages/TaskListPage';
+import TaskDetailsPage from "./pages/TaskDetailsPage";
+import Layout from "./Layout";
+import Signin from "./pages/Signin";
+import Notfound from "./pages/Notfound";
+import ProtectedRoute from "./ProtectedRoute";
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate to="/signin" replace />,
+  },
+  {
+    path: "/signin",
+    element: <Signin />,
+  },
+  {
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "/home",
+        element: (<HomePage />)
+      },
+      {
+        path: "tasks",
+        element: (<TaskListPage />)
+      },
+      {
+        path: "tasks/:id",
+        element: (<TaskDetailsPage />)
+      },
+    ]
+  },
+  {
+    path: "*",
+    element: <Notfound />,
+  },
+]);
+
+const App = () => {
   return (
-    <div className="App">
-      <TaskApp />
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
