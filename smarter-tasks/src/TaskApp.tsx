@@ -1,4 +1,5 @@
 // import React, { useEffect } from "react";
+import React from "react";
 import { TaskItem } from "./types";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
@@ -18,15 +19,15 @@ const TaskApp = () => {
   //   document.title = `You have ${taskAppState.tasks.length} items`;
   // }, [taskAppState.tasks]);
   
-  // React.useEffect(() => {
-  //   const id = setTimeout(() => {
-  //     console.log(`Saved ${taskAppState.tasks.length} items to backend...`);
-  //   }, 5000);
-  //   return () => {
-  //     console.log("clear or cancel any existing network call");
-  //     clearTimeout(id);
-  //   };
-  // }, [taskAppState.tasks]);
+  React.useEffect(() => {
+    const id = setTimeout(() => {
+      console.log(`Saved ${taskAppState.tasks.length} items to backend...`);
+    }, 5000);
+    return () => {
+      console.log("clear or cancel any existing network call");
+      clearTimeout(id);
+    };
+  }, [taskAppState.tasks]);
 
   const addTask = (task: TaskItem) => {
     setTaskAppState({ tasks: [...taskAppState.tasks, task] });
@@ -37,6 +38,13 @@ const TaskApp = () => {
     updatedTasks.splice(index, 1);
     setTaskAppState({ tasks: updatedTasks });
   };
+
+  // const deleteTask = (index: number) => {
+  //   setTaskAppState((prevState) => {
+  //     const updatedTasks = prevState.tasks.filter((_, i) => i !== index);
+  //     return { tasks: updatedTasks };
+  //   });
+  // };
 
   return (
     <div className="container py-10 max-w-4xl mx-auto">
@@ -53,7 +61,7 @@ const TaskApp = () => {
             Pending
           </h1>
           <TaskForm addTask={addTask} />
-          <TaskList tasks={taskAppState.tasks} onDelete={deleteTask}/>
+          <TaskList tasks={taskAppState.tasks} onDelete={deleteTask} />
         </div>
       </div>
     </div>
