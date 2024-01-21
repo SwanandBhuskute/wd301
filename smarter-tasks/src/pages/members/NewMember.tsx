@@ -45,7 +45,7 @@ const NewMember = () => {
       <button
         type="button"
         onClick={openModal}
-        id='new-member-btn'
+        id="new-member-btn"
         className="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
         New Member
@@ -87,8 +87,8 @@ const NewMember = () => {
                       {/* I'll show the error, if it exists.*/}
                       {error && <span>{error}</span>}
                       <input
+                        id="name"
                         type="text"
-                        id='name'
                         placeholder="Enter member name..."
                         autoFocus
                         {...register('name', { required: true })}
@@ -97,8 +97,8 @@ const NewMember = () => {
                         }`}
                       />
                       <input
+                        id="email"
                         type="text"
-                        id='email'
                         placeholder="Enter member email..."
                         {...register('email', { required: true })}
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
@@ -106,8 +106,8 @@ const NewMember = () => {
                         }`}
                       />
                       <input
+                        id="password"
                         type="password"
-                        id='password'
                         placeholder="Enter member password..."
                         {...register('password', { required: true })}
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
@@ -119,13 +119,13 @@ const NewMember = () => {
                       {errors.password && <span>Password is required</span>}
                       <button
                         type="submit"
+                        id="create-member-btn"
                         className="inline-flex justify-center px-4 py-2 mr-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >
                         Submit
                       </button>
                       <button
                         type="button"
-                        id="create-member-btn"
                         onClick={closeModal}
                         className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >

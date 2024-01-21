@@ -11,7 +11,7 @@ export default function MemberListItems() {
   const { members, isLoading, isError, errorMessage } = state;
 
   if (members.length === 0 && isLoading) {
-    return <span>Loading</span>;
+    return <span>Loading...</span>;
   }
 
   if (isError) {
@@ -22,7 +22,7 @@ export default function MemberListItems() {
   return (
     <>
       {members.map((member: any) => (
-        <div key={member.id} className="member block p-6 bg-blue-100 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div key={member.id} className="block p-6 bg-blue-100 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 member">
           <h5 className="mb-2 text-xl font-medium text-gray-900 dark:text-white">Name: {member.name}</h5>
           <h5 className="mb-2 text-xl font-medium text-gray-900 dark:text-white">Email: {member.email}</h5>
           <button
