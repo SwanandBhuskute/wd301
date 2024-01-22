@@ -12,7 +12,7 @@ import { updateTask } from "../../context/task/actions";
 import { useMembersState } from "../../context/members/context";
 import { useProjectsState } from "../../context/projects/context";
 import { TaskDetailsPayload } from "../../context/task/types";
-import { fetchComment, addComment } from "../../context/comment/actions";
+import { fetchComment, addComments } from "../../context/comment/actions";
 
 type TaskFormUpdatePayload = TaskDetailsPayload & {
   selectedPerson: string;
@@ -104,13 +104,16 @@ const TaskDetails = () => {
     closeModal();
   };
   const onSubmitComment: SubmitHandler<Inputs> = async () => {
-    const comment = {
-      description: inputComment,
-    };
-    addComment(dispatch, projectID ?? "", taskID ?? "", comment);
-    setInputComment("");
-  };
+    try {
+      addComments(dispatch, projectID ?? "", taskID ?? "", {
+        description: inputComment,
+      });
 
+      setInputComment("");
+    } catch (error) {
+      console.error("Failed to add comment:", error);
+    }
+  };
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -221,14 +224,14 @@ const TaskDetails = () => {
                       </Listbox>
                       <button
                         type="submit"
-                        className="inline-flex justify-center px-4 py-2 mr-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        className="inline-flex justify-center px-4 py-2 mr-2 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >
                         Update
                       </button>
                       <button
                         type="submit"
                         onClick={closeModal}
-                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-purple-200 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >
                         Cancel
                       </button>
@@ -244,7 +247,7 @@ const TaskDetails = () => {
 
                       <input
                         type="text"
-                        placeholder="Enter comment here..."
+                        placeholder="Enter comment here"
                         id="commentBox"
                         required
                         onChange={(e) => setInputComment(e.target.value)}
@@ -254,7 +257,7 @@ const TaskDetails = () => {
                       <button
                         type="submit"
                         id="addCommentBtn"
-                        className="inline-flex justify-center px-4 py-2 mr-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        className="inline-flex justify-center px-4 py-2 mr-2 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >
                         Add comment
                       </button>
@@ -276,8 +279,7 @@ const TaskDetails = () => {
                                 {comment.User && (
                                   <>
                                     <p className="m-2">
-                                      <strong>Name:</strong>{" "}
-                                      {comment.User.name}
+                                      <strong>Name:</strong> {comment.User.name}
                                     </p>
                                     <p className="m-2">
                                       <strong>Timestamp:</strong>{" "}

@@ -7,7 +7,6 @@ import {
 } from "./types";
 import { TaskDetails } from "./types";
 
-// The function will take a dispatch as first argument, which can be used to send an action to `reducer` and update the state accordingly
 export const addTask = async (
   dispatch: TasksDispatch,
   projectID: string,
@@ -15,10 +14,8 @@ export const addTask = async (
 ) => {
   const token = localStorage.getItem("authToken") ?? "";
   try {
-    // The following action will toggle `isLoading` to `true`
     dispatch({ type: TaskListAvailableAction.CREATE_TASK_REQUEST });
 
-    // Invoke the backend server with POST request and create a task.
     const response = await fetch(
       `${API_ENDPOINT}/projects/${projectID}/tasks/`,
       {

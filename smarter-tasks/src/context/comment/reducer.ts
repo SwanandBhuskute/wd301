@@ -3,13 +3,10 @@ import {
   CommentListAvailableAction,
   CommentListState,
   CommentActions,
+  initialStateComment
 } from "./types";
-export const initialStateComment: CommentListState = {
-  data: [],
-  isLoading: false,
-  isError: false,
-  errorMessage: "",
-};
+
+
 export const commentReducer: Reducer<CommentListState, CommentActions> = (
   state = initialStateComment,
   action
@@ -34,11 +31,11 @@ export const commentReducer: Reducer<CommentListState, CommentActions> = (
         errorMessage: action.payload,
       };
     case CommentListAvailableAction.CREATE_COMMENT_REQUEST:
-      console.log(`Testing`);
+      console.log(`HI this Type`);
 
       return { ...state, isLoading: true };
     case CommentListAvailableAction.CREATE_COMMENT_SUCCESS:
-      console.log(`Testing`);
+      console.log(`HI this Type`);
 
       return {
         ...state,
