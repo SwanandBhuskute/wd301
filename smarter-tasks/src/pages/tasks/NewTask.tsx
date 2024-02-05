@@ -81,7 +81,7 @@ const NewTask = () => {
                       <input
                         type="text"
                         required
-                        placeholder="Enter title"
+                        placeholder="Enter title..."
                         autoFocus
                         id="title"
                         // Register the title field
@@ -91,7 +91,7 @@ const NewTask = () => {
                       <input
                         type="text"
                         required
-                        placeholder="Enter description"
+                        placeholder="Enter description..."
                         autoFocus
                         id="description"
                         // register the description field
@@ -101,7 +101,7 @@ const NewTask = () => {
                       <input
                         type="date"
                         required
-                        placeholder="Enter due date"
+                        placeholder="Enter due date..."
                         autoFocus
                         id="dueDate"
                         // register due date field
