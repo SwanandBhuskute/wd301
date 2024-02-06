@@ -105,15 +105,15 @@ const TaskDetails = () => {
   };
   const onSubmitComment: SubmitHandler<Inputs> = async () => {
     try {
-      addComments(dispatch, projectID ?? "", taskID ?? "", {
+      await addComments(dispatch, projectID ?? "", taskID ?? "", {
         description: inputComment,
       });
-
+  
       setInputComment("");
     } catch (error) {
       console.error("Failed to add comment:", error);
     }
-  };
+  };  
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -247,7 +247,7 @@ const TaskDetails = () => {
 
                       <input
                         type="text"
-                        placeholder="Enter comment here"
+                        placeholder="Write comment here"
                         id="commentBox"
                         required
                         onChange={(e) => setInputComment(e.target.value)}
@@ -264,13 +264,13 @@ const TaskDetails = () => {
                     </form>
 
                     <div className="mt-2 space-y-4">
-                      {commentsState.isLoading ? (
+                    {commentsState.isLoading ? (
                         <p>Loading comments...</p>
                       ) : commentsState.isError ? (
                         <p>Error: {commentsState.errorMessage}</p>
                       ) : (
                         <div className="mt-2 space-y-4">
-                          {commentsState.data.map((comment) => (
+                          {commentsState.data.slice().map((comment) => (
                             <div
                               key={comment.id}
                               className="p-3 bg-gray-100 rounded-lg shadow-md comment"
@@ -284,15 +284,12 @@ const TaskDetails = () => {
                                     <p className="m-2">
                                       <strong>Timestamp:</strong>{" "}
                                       {comment.createdAt &&
-                                        new Date(
-                                          comment.createdAt
-                                        ).toLocaleString()}
+                                        new Date(comment.createdAt).toLocaleString()}
                                     </p>
                                   </>
                                 )}
                                 <p className="m-2">
-                                  <strong>Comment:</strong>{" "}
-                                  {comment.description}
+                                  <strong>Comment:</strong> {comment.description}
                                 </p>
                               </div>
                             </div>

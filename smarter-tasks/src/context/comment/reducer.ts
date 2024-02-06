@@ -31,11 +31,9 @@ export const commentReducer: Reducer<CommentListState, CommentActions> = (
         errorMessage: action.payload,
       };
     case CommentListAvailableAction.CREATE_COMMENT_REQUEST:
-      console.log(`HI this Type`);
 
       return { ...state, isLoading: true };
     case CommentListAvailableAction.CREATE_COMMENT_SUCCESS:
-      console.log(`HI this Type`);
 
       return {
         ...state,

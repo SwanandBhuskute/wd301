@@ -16,7 +16,7 @@ const TaskDetailsContainer = () => {
  return <>Loading...</>;
   }
   if (!selectedTask) {
-    return <>No such task!</>;
+    return <>No task</>;
   }
 
   return <TaskDetails />;
