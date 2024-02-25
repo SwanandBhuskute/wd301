@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate} from "react-router-dom";
 // @ts-ignore
 import React, { lazy, Suspense } from 'react';
 import AccountLayout from "../layouts/account"
-import ProtectedRoute from "./ProtectedRoutes"
+import ProtectedRoute from "./ProtectedRoute"
 import ProjectContainer from "../pages/projects/ProjectContainer";
 // import Signin from "../pages/signin"
 // import Signup from "../pages/signup"
