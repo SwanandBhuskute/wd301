@@ -4,7 +4,6 @@ import React, { lazy, Suspense } from 'react';
 import AccountLayout from "../layouts/account"
 import ProtectedRoute from "./ProtectedRoute"
 import ProjectContainer from "../pages/projects/ProjectContainer";
-import Notfound from "../pages/Notfound";
 import Signin from "../pages/signin"
 import Signup from "../pages/signup"
 import Projects from "../pages/projects"
@@ -84,10 +83,6 @@ const router = createBrowserRouter([
         path: "members",
         element: (<Members />)
       },
-      {
-        path: "/notfound",
-        element: (<Notfound />)
-      }
     ],
   },
 ]);
