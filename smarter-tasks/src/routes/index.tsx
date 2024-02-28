@@ -4,25 +4,26 @@ import React, { lazy, Suspense } from 'react';
 import AccountLayout from "../layouts/account"
 import ProtectedRoute from "./ProtectedRoute"
 import ProjectContainer from "../pages/projects/ProjectContainer";
-// import Signin from "../pages/signin"
-// import Signup from "../pages/signup"
-// import Projects from "../pages/projects"
-// import Members from "../pages/members"
-// import Logout from "../pages/logout"
-// import ProjectDetails from "../pages/project_details";
-// import NewTask from "../pages/tasks/NewTask";
-// import TaskDetailsContainer from "../pages/tasks/TaskDetailsContainer";
+import Notfound from "../pages/Notfound";
+import Signin from "../pages/signin"
+import Signup from "../pages/signup"
+import Projects from "../pages/projects"
+import Members from "../pages/members"
+import Logout from "../pages/logout"
+import ProjectDetails from "../pages/project_details";
+import NewTask from "../pages/tasks/NewTask";
+import TaskDetailsContainer from "../pages/tasks/TaskDetailsContainer";
 
-const Signin = React.lazy(() => import("../pages/signin"));
-const Signup = React.lazy(() => import("../pages/signup"));
-const Projects = React.lazy(() => import("../pages/projects"));
-const Members = React.lazy(() => import("../pages/members"));
-const Logout = React.lazy(() => import("../pages/logout"));
-const ProjectDetails = React.lazy(() => import("../pages/project_details"));
-const NewTask = React.lazy(() => import("../pages/tasks/NewTask"));
-const TaskDetailsContainer = React.lazy(
-  () => import("../pages/tasks/TaskDetailsContainer")
-);
+// const Signin = React.lazy(() => import("../pages/signin"));
+// const Signup = React.lazy(() => import("../pages/signup"));
+// const Projects = React.lazy(() => import("../pages/projects"));
+// const Members = React.lazy(() => import("../pages/members"));
+// const Logout = React.lazy(() => import("../pages/logout"));
+// const ProjectDetails = React.lazy(() => import("../pages/project_details"));
+// const NewTask = React.lazy(() => import("../pages/tasks/NewTask"));
+// const TaskDetailsContainer = React.lazy(
+//   () => import("../pages/tasks/TaskDetailsContainer")
+// );
 
 const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/account/projects" replace /> },
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
         path: "members",
         element: (<Members />)
       },
+      {
+        path: "/notfound",
+        element: (<Notfound />)
+      }
     ],
   },
 ]);

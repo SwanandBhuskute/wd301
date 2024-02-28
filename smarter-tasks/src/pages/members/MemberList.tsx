@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { fetchMembers } from "../../context/members/actions";
 import { useEffect } from "react";
 import { useMembersDispatch } from "../../context/members/context";
-import MemberListItems from './MemberListItems';
+const MemberListItems = React.lazy(() => import("./MemberListItems"));
 import ErrorBoundary from "../../components/ErrorBoundary";
 
 const MemberList: React.FC = () => {
