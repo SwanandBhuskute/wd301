@@ -1,8 +1,10 @@
 import React, { Suspense } from "react";
-import ProjectDetails from "./ProjectDetails";
+const ProjectDetails = React.lazy(() => import("./ProjectDetails"));
 import { Outlet } from "react-router-dom";
 import { TasksProvider } from "../../context/task/context";
 import ErrorBoundary from "../../components/ErrorBoundary";
+//@ts-ignore
+import { CommentProvider } from "../../context/comment/context";
 
 const ProjectDetailsIndex: React.FC = () => {
   return (
